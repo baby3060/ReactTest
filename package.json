@@ -4,7 +4,7 @@
   "description": "Test ReactJS",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,5 @@
   "devDependencies": {
     "file-loader": "^1.1.5",
     "url-loader": "^0.6.2"
-  },
-    "os":["win64"]
+  }
 }

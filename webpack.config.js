@@ -9,6 +9,7 @@ var config = {
     },
     devServer : {
         inline : true,
+        hot : true,
         port : 8181
     },
     module : {
@@ -51,9 +52,7 @@ var config = {
         new ExtractTextPlugin({
             filename : 'app.css'
         })
-    ],
-    
-    
+    ]
 }
 
 module.exports = config;

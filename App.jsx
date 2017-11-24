@@ -42,18 +42,22 @@ class App extends React.Component {
                 <h1 style={myStyle}>{this.state.header}</h1>
                 <h2>{this.state.Content}</h2>
                 <p date-myattribute="somevalue">This is the Content!!!</p>
-                <JSCal />
-                <p></p>
-                <TBTest />
+                <JSCal first="120" />
+                <TBTest IdThText="Id" NaThText="NAME" />
+                <h4>{this.props.h4Text}</h4>
             </div>
         );
     }
 }
 
+App.defaultProps = {
+    h4Text : "이것은 Default 입니다."
+}
+
 class JSCal extends React.Component {
     render() {
         return (
-            <p>{ 1 + 1 }</p>
+            <p>{parseInt(this.props.first, 10) + 1}</p>
         );
     }
 }
@@ -78,9 +82,9 @@ class TBTest extends React.Component {
             <table border="1">
                <thead>
                     <tr>
-                        <th style={thStyle}>ID</th>
-                        <th style={thStyle}>Name</th>
-                        <th style={thStyle}>Age</th>
+                        <th style={thStyle}>{this.props.IdThText}</th>
+                        <th style={thStyle}>{this.props.NaThText}</th>
+                        <th style={thStyle}>{this.props.AgThText}</th>
                     </tr>
                </thead>
                
@@ -92,6 +96,13 @@ class TBTest extends React.Component {
             </table>
         );
     }
+}
+
+
+TBTest.defaultProps = {
+    IdThText : "Id",
+    NaThText : "NAME",
+    AgThText : "나이",
 }
 
 class TableRow extends React.Component {
