@@ -23,8 +23,14 @@ function SetData2() {
 }
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            header : "Header Text Showme",
+            Content : "It is Content Text"
+        }
+        
     }
     render() {
         var myStyle = {
@@ -33,8 +39,8 @@ class App extends React.Component {
         }
         return (
             <div>
-                <h1 style={myStyle}>Header</h1>
-                <h2>Content</h2>
+                <h1 style={myStyle}>{this.state.header}</h1>
+                <h2>{this.state.Content}</h2>
                 <p date-myattribute="somevalue">This is the Content!!!</p>
                 <JSCal />
                 <p></p>
