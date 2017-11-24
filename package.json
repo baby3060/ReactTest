@@ -1,0 +1,30 @@
+{
+  "name": "testrea",
+  "version": "1.0.0",
+  "description": "Test ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baby3060/ReactTest.git"
+  },
+  "author": "Tester",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baby3060/ReactTest/issues"
+  },
+  "homepage": "https://github.com/baby3060/ReactTest#readme",
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.5",
+    "url-loader": "^0.6.2"
+  },
+    "os":["win64"]
+}
