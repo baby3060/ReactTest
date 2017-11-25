@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
 var data2;
 
@@ -45,10 +47,15 @@ class App extends React.Component {
                 <JSCal first="120" />
                 <TBTest IdThText="Id" NaThText="NAME" />
                 <h4>{this.props.h4Text}</h4>
+                <PropEx />
             </div>
         );
     }
 }
+
+App.propTypes = {
+    h4Text: PropTypes.string
+};
 
 App.defaultProps = {
     h4Text : "이것은 Default 입니다."
@@ -115,6 +122,42 @@ class TableRow extends React.Component {
          </tr>
       );
     }
+}
+
+class PropEx extends React.Component {
+    render() {
+        
+        return (
+            <div>
+                <h1>Hello, {this.props.name}</h1>
+                <h3>Array : {this.props.propArray}</h3>
+                <h3>Bool : {this.props.propBool?"True..":"False..."}</h3>
+                <h3>Func : {this.props.propFunc(3)}</h3>
+                <h3>Number : {this.props.propNumber}</h3>
+                <h3>String : {this.props.propString}</h3>
+            </div>
+        );
+    }
+}
+
+PropEx.propTypes = {
+    name: PropTypes.string,
+    propArray : PropTypes.array.isRequired,
+    propBool : PropTypes.bool.isRequired,
+    propFunc : PropTypes.func,
+    propNumber : PropTypes.number,
+    propString: PropTypes.string
+};
+
+PropEx.defaultProps = {
+    name : 'Tutorialspoint.com',
+    propArray : [1, 2, 3, 4, 5],
+    propBool : true,
+    propFunc : function(e) {
+        return e
+    },
+    propNumber : 1,
+    propString : "String value..."
 }
 
 SetData2();
