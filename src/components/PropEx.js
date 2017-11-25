@@ -12,6 +12,7 @@ class PropEx extends React.Component {
                 <h3>Func : {this.props.propFunc(3)}</h3>
                 <h3>Number : {this.props.propNumber}</h3>
                 <h3>String : {this.props.propString}</h3>
+                <h3>HolZZak : {this.props.propHolZZak}</h3>
             </div>
         );
     }
@@ -23,7 +24,8 @@ PropEx.propTypes = {
     propBool : PropTypes.bool.isRequired,
     propFunc : PropTypes.func,
     propNumber : PropTypes.number,
-    propString: PropTypes.string
+    propString: PropTypes.string,
+    propHolZZak : PropTypes.oneOf(['HOL', 'ZZAK']).isRequired
 };
 
 PropEx.defaultProps = {

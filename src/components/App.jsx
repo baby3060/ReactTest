@@ -27,7 +27,7 @@ class App extends React.Component {
                 <JSCal first="120" />
                 <TBTest IdThText="Id" NaThText="NAME" />
                 <h4>{this.props.h4Text}</h4>
-                <PropEx />
+                <PropEx propHolZZak="HOL" />
             </div>
         );
     }

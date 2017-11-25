@@ -1,6 +1,7 @@
 import React from 'react';
+import stUpdate from 'react-addons-update'
 
-var data2;
+let data2;
 
 function SetData2() {
     data2 = [
@@ -30,7 +31,7 @@ class TBTest extends React.Component {
         }
     }
     render() {
-        var thStyle = {
+        let thStyle = {
             fontSize : '12',
             backgroundColor : 'yellow',
             color : 'red',
