@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TBTest from './TBTest';
+import TBManager from './TBManager.jsx';
 import PropEx from './PropEx';
 
 class App extends React.Component {
@@ -25,7 +25,7 @@ class App extends React.Component {
                 <h2>{this.state.Content}</h2>
                 <p date-myattribute="somevalue">This is the Content!!!</p>
                 <JSCal first="120" />
-                <TBTest IdThText="Id" NaThText="NAME" />
+                <TBManager IdThText="Id" NaThText="NAME" />
                 <h4>{this.props.h4Text}</h4>
                 <PropEx propHolZZak="HOL" />
             </div>
