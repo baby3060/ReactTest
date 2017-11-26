@@ -100,6 +100,9 @@ class RowCreator extends React.Component {
             name : "",
             age : 0
         }
+        
+        this.setObjValue = this.setObjValue.bind(this);
+        
     }
     
     setObjValue(e) {
@@ -143,15 +146,15 @@ class RowCreator extends React.Component {
             <div>
                 <input type="text" name="id" placeholder="Id" 
                        value={this.state.id}
-                       onChange={this.setObjValue.bind(this)}
+                       onChange={this.setObjValue}
                     />
                 <input type="text" name="name" placeholder="Name" 
                         value={this.state.name}
-                        onChange={this.setObjValue.bind(this)}
+                        onChange={this.setObjValue}
                     />
                 <input type="text" name="age" placeholder="Age" 
                         value={this.state.age}
-                        onChange={this.setObjValue.bind(this)}
+                        onChange={this.setObjValue}
                     />
                 <button
                     onClick={this.AddBtnClick.bind(this)}
