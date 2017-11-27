@@ -43,6 +43,18 @@ class TBManager extends React.Component {
     
     p_insertUser(id, name, age) {
         
+        this.setState({
+            UserData : stUpdate(
+                  this.state.UserData
+                , {
+                    $push : [{"id" : id, "name" : name, "age" : age}]    
+                }
+            )
+          , selectedKey : -1
+        });
+        
+        // Bad Update Way
+        /* 
         let newState = stUpdate(
                            this.state
                          , {
@@ -56,6 +68,7 @@ class TBManager extends React.Component {
                             }
                         );
         this.setState(newState);
+        */
     }
     
     f_isSelected_U(key) {
