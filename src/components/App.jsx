@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TBManager from './TBManager.jsx';
+import TBManager from './TBManager';
 import PropEx from './PropEx';
 
 class App extends React.Component {

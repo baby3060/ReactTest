@@ -43,8 +43,6 @@ class TBManager extends React.Component {
     
     p_insertUser(id, name, age) {
         
-        console.log(this.state.selectedKey);
-        
         let newState = stUpdate(
                            this.state
                          , {
@@ -121,7 +119,7 @@ class TableRow extends React.Component {
     }
     
     render() {
-        let getStyle = isSelect => {
+        let getStyle = (isSelect) => {
             if(!isSelect) return;
             let style = {
                 backgroundColor : 'red',
