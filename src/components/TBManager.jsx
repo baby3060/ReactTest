@@ -22,19 +22,50 @@ class TBManager extends React.Component {
                     "name":"Baz",
                     "age": 40
                 }
-            ]
+            ],
+            selectedKey : -1
         }
     }
     
+    P_selectUser(key) {
+        if(key == this.state.selectedKey) {
+           this.setState({
+                selectedKey : -1   
+           });
+        return;
+        }
+        
+        this.setState({
+            selectedKey : key
+        });
+    }
+    
+    
     p_insertUser(id, name, age) {
+        
+        console.log(this.state.selectedKey);
         
         let newState = stUpdate(
                            this.state
-                         , {UserData : {
-                              $push : [{"id" : id, "name" : name, "age" : age}]
-                           }}
+                         , {
+                                UserData : {
+                                    $push : [{"id" : id, "name" : name, "age" : age}]
+                                }
+                                , selectedKey : {
+                                    $set : [-1]
+                                }
+                             
+                            }
                         );
         this.setState(newState);
+    }
+    
+    f_isSelected_U(key) {
+        if( this.state.selectedKey == key ) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     render() {
@@ -61,8 +92,13 @@ class TBManager extends React.Component {
                             </tr>
                        </thead>
                        <tbody>
-                             {this.state.UserData.map((person, i) => <TableRow key = {i} 
-                                data = {person} />)}
+                             {this.state.UserData.map((person, i) => 
+                                                      <TableRow key = {i} 
+                                                                data = {person} 
+                                                                isSelected={this.f_isSelected_U.bind(this)(i)}
+                                                                onSelUser={this.P_selectUser.bind(this)}
+                                                                userKey={i}
+                                                        />)}
                         </tbody>
 
                     </table>
@@ -80,9 +116,25 @@ TBManager.defaultProps = {
 }
 
 class TableRow extends React.Component {
+    tr_Click() {
+        this.props.onSelUser(this.props.userKey);
+    }
+    
     render() {
+        let getStyle = isSelect => {
+            if(!isSelect) return;
+            let style = {
+                backgroundColor : 'red',
+                color : 'blue'
+            };
+            
+            return style;
+        };
+        
         return (
-         <tr>
+         <tr style={getStyle(this.props.isSelected)}
+             onClick={this.tr_Click.bind(this)}
+           >
             <td>{this.props.data.id}</td>
             <td>{this.props.data.name}</td>
             <td>{this.props.data.age}</td>
