@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import TBManager from './TBManager';
 import PropEx from './PropEx';
+import RefTest from './RefTest';
 
 class App extends React.Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class App extends React.Component {
             <div>
                 <h1 style={myStyle}>{this.state.header}</h1>
                 <h2>{this.state.Content}</h2>
-                <p date-myattribute="somevalue">This is the Content!!!</p>
                 <JSCal first="120" />
                 <TBManager IdThText="Id" NaThText="NAME" />
                 <h4>{this.props.h4Text}</h4>
                 <PropEx propHolZZak="HOL" />
+                <RefTest />
             </div>
         );
     }
