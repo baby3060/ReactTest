@@ -1,6 +1,7 @@
 import React from 'react';
 import stUpdate from 'react-addons-update';
 import PropTypes from 'prop-types';
+import { Row, Col, Form, FormGroup, Input, Button, Label } from 'reactstrap';
 
 class TBManager extends React.Component {
     constructor(props){
@@ -39,9 +40,14 @@ class TBManager extends React.Component {
                   this.state.UserData
                 , {
                     $push : [{"id" : id, "name" : name, "age" : age}]    
-                }
+                  }
             )
           , selectedKey : -1
+          , selectedUser : {
+              id : "",
+              name : "",
+              age : "0"
+          }
         });
         
         // Bad Update Way
@@ -70,6 +76,39 @@ class TBManager extends React.Component {
         }
     }
     
+    UserSelected(key) {
+        if( this.state.selectedKey == key ) {
+            // 다시 누를 경우 취소
+            this.setState({
+             /* Set Way
+                selectedUser : {
+                        id : "",
+                         name : "",
+                        age  : "0"
+                    }
+                */
+                // Update Way
+                 selectedUser : stUpdate(
+                    this.state.selectedUser,
+                    {
+                        id : {$set : ""},
+                        name : {$set : ""},
+                        age : {$set : "0"}
+                    }
+                )
+                , selectedKey : -1
+            });
+
+            return;
+         } else {
+            this.setState({
+                  selectedUser : this.state.UserData[key]
+                , selectedKey : key
+            });
+        }
+        
+    }
+    
     userRemove(){
         if(this.state.selectedKey == -1) {
             alert("User를 선택바랍니다.");
@@ -83,30 +122,6 @@ class TBManager extends React.Component {
               )
             , selectedKey : -1
         });
-        
-    }
-    
-    UserSelected(key) {
-        if( this.state.selectedKey == key ) {
-            // 다시 누를 경우 취소
-            this.setState({
-                selectedUser : stUpdate (
-                    this.state.selectedUser
-                  , {
-                       id : {$set : ""},
-                       name : {$set : ""},
-                       age  : {$set : "0"}
-                    }
-                ), selectedKey : -1
-            });
-            
-            return;
-        } else {
-            this.setState({
-                 selectedUser : this.state.UserData[key]
-                , selectedKey : key
-            });
-        }
     }
     
     p_ModifyUser(id, name, age) {
@@ -121,6 +136,7 @@ class TBManager extends React.Component {
                     }
                 }
             ),
+            /* Update Way
             selectedUser : stUpdate(
                 this.state.selectedUser,
                 {
@@ -129,6 +145,13 @@ class TBManager extends React.Component {
                     age : {$set : age}
                 }
             )
+            */
+            // set Way
+            selectedUser : {
+                       id : id,
+                       name : name,
+                       age  : age
+            }
         });
     }
     
@@ -193,6 +216,10 @@ class TableRow extends React.Component {
         this.props.onSelUser(this.props.userKey);
     }
     
+    shouldComponentUpdate(nextProps, nextState) {
+        return (JSON.stringify(nextProps) != JSON.stringify(this.props));
+    }
+    
     render() {
         let getStyle = (isSelect) => {
             if(!isSelect) return;
@@ -223,7 +250,7 @@ class RowCreator extends React.Component {
         this.state = {
             id : "",
             name : "",
-            age : 0
+            age : "0"
         }
         
         this.setObjValue = this.setObjValue.bind(this);
@@ -252,7 +279,7 @@ class RowCreator extends React.Component {
             this.setState({
                 id : "",
                 name : "",
-                age : 0
+                age : "0"
             });
         } else {
             if( !idVal ) {
@@ -269,23 +296,27 @@ class RowCreator extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" name="id" placeholder="Id" 
-                       value={this.state.id}
-                       onChange={this.setObjValue}
-                    />
-                <input type="text" name="name" placeholder="Name" 
-                        value={this.state.name}
-                        onChange={this.setObjValue}
-                    />
-                <input type="text" name="age" placeholder="Age" 
-                        value={this.state.age}
-                        onChange={this.setObjValue}
-                    />
-                <button
-                    onClick={this.AddBtnClick.bind(this)}
-                    >
-                    Add User
-                </button>
+                
+                        <input type="text" name="id" placeholder="Id" 
+                               value={this.state.id}
+                               onChange={this.setObjValue}
+                            />
+                        <input type="text" name="name" placeholder="Name" 
+                                value={this.state.name}
+                                onChange={this.setObjValue}
+                            />
+                        <input type="text" name="age" placeholder="Age" 
+                                value={this.state.age}
+                                onChange={this.setObjValue}
+                            />
+                        <Button
+                            outline
+                            onClick={this.AddBtnClick.bind(this)}
+                            color="success"
+                            >
+                            Add User
+                        </Button>
+                    
             </div>
         );
     }
@@ -294,7 +325,7 @@ class RowCreator extends React.Component {
 RowCreator.propTypes = {
     id: PropTypes.string,
     name : PropTypes.string,
-    age : PropTypes.number
+    age : PropTypes.string
 };
 
 class RowRemover extends React.Component {
@@ -329,7 +360,7 @@ class RowSelector extends React.Component {
         this.state = {
             id : "",
             name : "",
-            age : 0
+            age : "0"
         }
     }
     
@@ -356,7 +387,7 @@ class RowSelector extends React.Component {
             this.setState({
                 id : "",
                 name : "",
-                age : 0
+                age : "0"
             });
         } else {
             if( !idVal ) {
@@ -377,6 +408,7 @@ class RowSelector extends React.Component {
     }
     
     render() {
+        
         let divStyle = isSelected => {
             let style = {};
             
