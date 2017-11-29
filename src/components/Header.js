@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <div>
-            <NavLink exact to="/" >홈</NavLink>
-            <NavLink to="/login"> Login</NavLink>
+            <NavLink exact={true} to="/" activeStyle={{ color: 'red' }}>홈</NavLink>
+            <NavLink exact={false} to="/login" activeStyle={{ color: 'red' }}> Login</NavLink>
         </div>
     );
 };
