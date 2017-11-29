@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TBManager from './TBManager';
-import PropEx from './PropEx';
-import RefTest from './RefTest';
+import TBManager from './app/TBManager';
+import PropEx from './app/PropEx';
+import RefTest from './app/RefTest';
 
-class App extends React.Component {
+class Home extends React.Component {
     constructor(props) {
         super(props);
         
@@ -34,11 +34,11 @@ class App extends React.Component {
     }
 }
 
-App.propTypes = {
+Home.propTypes = {
     h4Text: PropTypes.string
 };
 
-App.defaultProps = {
+Home.defaultProps = {
     h4Text : "이것은 Default 입니다."
 }
 
@@ -50,4 +50,4 @@ class JSCal extends React.Component {
     }
 }
 
-export default App;
+export default Home;
