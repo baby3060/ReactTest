@@ -1,11 +1,27 @@
 import React from 'react';
 
-const Login_child = (props) => {
-    return(
-        <div>
-            <h5>{props.name}</h5>
-        </div>
-    );
+class Login_child extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
+    onSaveEvent() {
+        this.props.onSave();
+    }
+    
+    render() {
+        return(
+            <div>
+                <h5>{this.props.name}</h5>
+                <button
+                    onClick={this.onSaveEvent.bind(this)}
+                >
+                Login
+                </button>
+            </div>
+        );
+    }
+    
 }
 
 export default Login_child;

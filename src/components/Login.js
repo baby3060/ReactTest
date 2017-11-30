@@ -1,19 +1,28 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import LChild from './Login_child';
-import LChild2 from './Login_child2';
+import { Redirect } from 'react-router-dom';
+import LChild from './route/Login_child';
+import LChild2 from './route/Login_child2';
+import JChild from './route/Join_child';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             LHeader : [
-                {"name" : "Login", "to" : "/login", "ex" : true, "comp" : LChild2},
-                {"name" : "Display", "to" : "/login/display", "ex" : false, "comp" : LChild2},
-                {"name" : "Select", "to" : "/login/select", "ex" : false, "comp" : LChild2}
+                {"name" : "Login", "to" : "/login", "ex" : true, "comp" : LChild, "onBtn" : this.loginClick.bind(this)},
+                {"name" : "Join", "to" : "/login/join", "ex" : false, "comp" : JChild, "onBtn" : this.NullClick.bind(this)}
             ]
         }
+    }
+    
+    loginClick() {
+        this.props.onLogin();
+    }
+    
+    NullClick() {
+        return;
     }
     
     render() {
@@ -22,7 +31,7 @@ class Login extends Component {
             // Second Way : match.params 넘기기
             
             // First Way
-            /*
+            
             return(
                 <NavLink to={Menu.to}
                             key={Menu.name}
@@ -34,10 +43,11 @@ class Login extends Component {
                             activeStyle={{ color: 'red' }}
                     >{Menu.name}</NavLink>
             )   
-            */
+            
             // First Way
             
             // Second Way
+            /*
             return(
                 <NavLink to={Menu.to+"/" + Menu.name}
                             key={Menu.name}
@@ -49,14 +59,17 @@ class Login extends Component {
                             activeStyle={{ color: 'red' }}
                     >{Menu.name}</NavLink>
             )   
+            */
             // Second Way
         })
         
         // First Way
-        /* 
+        
         return (
             <div>
-                
+                {
+                    this.props.logFlag && <Redirect to="/pur" />
+                }
                 <h3>로그인 화면입니다. 상세 화면을 선택하세요.</h3>
                 {links}
                 <div>
@@ -66,7 +79,9 @@ class Login extends Component {
                                     exact={Menu.ex}
                                     path={Menu.to} 
                                     render={(props) => (
-                                    <Menu.comp name={Menu.name}/>
+                                    <Menu.comp name={Menu.name}
+                                                onSave={Menu.onBtn}
+                                    />
                                     )}
                                     key={Menu.to}
                             />
@@ -75,10 +90,11 @@ class Login extends Component {
                 </div>
             </div>
         );
-        */
+        
         // First Way
         
         // Second Way
+        /* 
         return (
             <div>
                 
@@ -98,6 +114,7 @@ class Login extends Component {
                 </div>
             </div>
         );
+        */
         // Second Way
         
     }
