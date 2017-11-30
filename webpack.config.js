@@ -22,12 +22,41 @@ var config = {
                     presets: ['env', 'es2015', 'react', 'stage-0']
                 }
             },
+             {
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options : {
+                    presets: ['env', 'es2015', 'react', 'stage-0']
+                }
+            },
             {
                 test:/\.css$/,
-                use : ExtractTextPlugin.extract ({
-                    fallback: 'style-loader',
-                    use : 'css-loader'
-                })
+                use: [
+                    require.resolve('style-loader'),
+                    {
+                        loader : 'css-loader',
+                        options: {
+                            modules: true,
+                            camelCase: true,
+                            localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                          }
+                    },
+                    { 
+                        loader: 'postcss-loader',
+                          options: {
+                            ident: 'postcss',
+                            plugins: (loader) => [
+                              require('postcss-flexbugs-fixes')(),
+                              require('postcss-import')({ root: loader.resourcePath }),
+                              require('postcss-cssnext')({
+                                  warnForDuplicates : false
+                              }),
+                              require('cssnano')()
+                            ]
+                          } 
+                    }
+                  ]
             },
             {
                 test : /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

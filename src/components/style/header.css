@@ -1,0 +1,29 @@
+.header {
+  display : inline-block;
+  width : 100%;
+  table-layout : fixed;
+    height: 100px;
+}
+
+.blue {
+    background-color :darkcyan;
+}
+
+.items {
+    color : yellow;
+    display : inline-block;
+    table-layout : fixed;
+    width : 50%;
+    text-align : center;
+}
+
+
+.big {
+    font-size : 30pt;
+}
+
+
+.small {
+    font-size : 15pt;
+}
+
