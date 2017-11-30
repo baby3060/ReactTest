@@ -3,11 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import infoStyle from './style/info.css';
 
+import CatImg from '../../assets/Cat.png';
+import DogImg from '../../assets/Dog.png';
+
+import image3 from '../../assets/Tiger.png';
+import image4 from '../../assets/Elephant.png';
 
 const Infomation = ({match}) => {
+    const pName = match.params.name;
+
     return(
         <div>
             <h3>{match.params.name}</h3>
+            <br />
+            <img src={'/assets/' + DogImg} />
         </div>
     );
 }

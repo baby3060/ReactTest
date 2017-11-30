@@ -19,7 +19,7 @@ var config = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options : {
-                    presets: ['env', 'es2015', 'react', 'stage-0']
+                    presets: ['env',  'react', 'stage-0']
                 }
             },
              {
@@ -27,7 +27,7 @@ var config = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options : {
-                    presets: ['env', 'es2015', 'react', 'stage-0']
+                    presets: ['env', 'react', 'stage-0']
                 }
             },
             {
@@ -58,14 +58,14 @@ var config = {
                     }
                   ]
             },
-            {
-                test : /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader : 'url-loader',
+            {test: /\.(jpe?g|png|gif|svg)$/i, 
+                loader: "file-loader",
                 options : {
-                    name: '[hash].[ext]',
-                    limit : 10000
+                    publicPath : './assets/',
+                    name : '[name].[ext]?[hash]'
                 }
             }
+
         ]
     },
     resolve : {
