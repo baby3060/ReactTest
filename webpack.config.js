@@ -58,14 +58,10 @@ var config = {
                     }
                   ]
             },
-            {test: /\.(jpe?g|png|gif|svg)$/i, 
-                loader: "file-loader",
-                options : {
-                    publicPath : './assets/',
-                    name : '[name].[ext]?[hash]'
-                }
+            {
+                test: /\.(png|jpg|gif)$/,
+                loader: "file-loader?name=/assets/[name].[ext]"
             }
-
         ]
     },
     resolve : {

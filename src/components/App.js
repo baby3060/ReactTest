@@ -18,13 +18,13 @@ class App extends Component {
             logFlag : false
         }
     }
-    
+
     loginHandle() {
         this.setState({
-           logFlag : true 
+           logFlag : true
         });
     }
-    
+
     render() {
         const Header = () => {
            return(
@@ -46,16 +46,16 @@ class App extends Component {
                         <Switch>
                             <Route exact={true} path="/" component={Home} />
                             <Route exact={false} path="/info" component={Info} />
-                            <Route exact={false} path="/login" 
+                            <Route exact={false} path="/login"
                                 render={(props) => (
-                                    <Login logFlag={this.state.logFlag} 
+                                    <Login logFlag={this.state.logFlag}
                                             onLogin={this.loginHandle.bind(this)}
                                         />
                                     )}
                             />
-                            <Route exact={false} path="/pur" 
+                            <Route exact={false} path="/pur"
                                     render={(props) => (
-                                    <Purchase logFlag={this.state.logFlag} 
+                                    <Purchase logFlag={this.state.logFlag}
                                         />
                                     )}
                             />
@@ -69,3 +69,4 @@ class App extends Component {
 }
 
 export default App;
+
