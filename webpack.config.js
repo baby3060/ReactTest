@@ -10,7 +10,8 @@ var config = {
     devServer : {
         inline : true,
         hot : true,
-        port : 8181
+        port : 8181,
+        historyApiFallback: true
     },
     module : {
         rules : [

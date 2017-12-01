@@ -30,7 +30,7 @@ const Infomation = ({match}) => {
             }
         </div>
     );
-}
+};
 
 const Info = () => {
     return(
@@ -53,6 +53,6 @@ const Info = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Info;

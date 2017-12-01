@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch,Redirect, withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 import Home from './Home';
@@ -8,8 +8,10 @@ import Info from './Info';
 import Purchase from './Purchase';
 
 import Hstyle from './style/header.css';
-
 import classNames from 'classnames';
+
+const NotFound = () => <div className="not_found"><h1>Not Found</h1></div>;
+
 
 class App extends Component {
     constructor(props) {
@@ -57,8 +59,10 @@ class App extends Component {
                                     render={(props) => (
                                     <Purchase logFlag={this.state.logFlag}
                                         />
-                                    )}
+                                    )} 
                             />
+                            
+                            <NotFound />
                         </Switch>
                     </div>
 
