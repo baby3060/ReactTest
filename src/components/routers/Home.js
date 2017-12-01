@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TBManager from './app/TBManager';
-import PropEx from './app/PropEx';
-import RefTest from './app/RefTest';
+import TBManager from './home/TBManager';
+import PropEx from './home/PropEx';
+import RefTest from './home/RefTest';
 
 class Home extends React.Component {
     constructor(props) {

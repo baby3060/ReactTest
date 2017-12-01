@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import infoStyle from './style/info.css';
+import infoStyle from '../style/info.css';
 
-import CatImg from '../../assets/Cat.png';
-import DogImg from '../../assets/Dog.png';
+import CatImg from '../../../assets/Cat.png';
+import DogImg from '../../../assets/Dog.png';
 
-import TigImg from '../../assets/Tiger.png';
-import EleImg from '../../assets/Elephant.png';
+import TigImg from '../../../assets/Tiger.png';
+import EleImg from '../../../assets/Elephant.png';
 
 const Infomation = ({match}) => {
     const pName = match.params.name;

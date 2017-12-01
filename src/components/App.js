@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch,Redirect, withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-import Home from './Home';
-import Login from './Login';
-import Info from './Info';
-import Purchase from './Purchase';
+import Home from './routers/Home';
+import Login from './routers/Login';
+import Info from './routers/Info';
+import Purchase from './routers/Purchase';
 
 import Hstyle from './style/header.css';
 import classNames from 'classnames';

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import LChild from './route/Login_child';
-import LChild2 from './route/Login_child2';
-import JChild from './route/Join_child';
+import LChild from './login/Login_child';
+import LChild2 from './login/Login_child2';
+import JChild from './join/Join_child';
 
 class Login extends Component {
     constructor(props) {
